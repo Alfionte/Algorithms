@@ -1,3 +1,6 @@
+import quicksort.improvedQuickSort
+import quicksort.quickSort
+
 fun main() {
 
     val unsortedList = listOf(0,1,2,4,5,9,12,3,56,79,88,96,111)

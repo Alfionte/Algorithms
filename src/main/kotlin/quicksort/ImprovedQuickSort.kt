@@ -1,3 +1,5 @@
+package quicksort
+
 fun improvedQuickSort(list: List<Int>): List<Int> =
     when (list.size) {
         0, 1 -> list

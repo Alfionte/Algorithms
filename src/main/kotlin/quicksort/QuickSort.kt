@@ -1,3 +1,4 @@
+package quicksort
 fun quickSort(list: List<Int>): List<Int> =
     when (list.size) {
         0, 1 -> list

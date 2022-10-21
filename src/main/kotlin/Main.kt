@@ -1,6 +1,7 @@
-import breadth.first.search.PersonNode
-import breadth.first.search.bfs
-import breadth.first.search.graph
+import graphs.Node
+import graphs.breadth.first.search.Person
+import graphs.breadth.first.search.bfs
+import graphs.breadth.first.search.graph
 
 fun main() {
     /*
@@ -15,6 +16,6 @@ fun main() {
     println("Binary search improved: $binarySearchImproved")
      */
 
-    val seller = bfs(PersonNode("Gabriele"), graph)
+    val seller = bfs(Node(Person("Gabriele")), graph)
     println(seller)
 }

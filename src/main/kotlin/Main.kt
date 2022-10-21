@@ -1,7 +1,7 @@
 import graphs.Node
-import graphs.breadth.first.search.Person
-import graphs.breadth.first.search.bfs
-import graphs.breadth.first.search.graph
+import graphs.dijkstra.Name
+import graphs.dijkstra.dijkstraGraph
+import graphs.dijkstra.dijkstraRun
 
 fun main() {
     /*
@@ -16,6 +16,8 @@ fun main() {
     println("Binary search improved: $binarySearchImproved")
      */
 
-    val seller = bfs(Node(Person("Gabriele")), graph)
-    println(seller)
+    // val seller = bfs(Node(Person("Gabriele")), graph)
+    // println(seller)
+
+    dijkstraRun(dijkstraGraph, Node(Name("start")), Node(Name("finish")))
 }

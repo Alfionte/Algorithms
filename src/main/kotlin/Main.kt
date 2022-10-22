@@ -1,7 +1,5 @@
-import graphs.Node
-import graphs.dijkstra.Name
-import graphs.dijkstra.dijkstraGraph
-import graphs.dijkstra.dijkstraRun
+import custom.data.structures.AddableMaxMinListUseCase
+import custom.data.structures.AddableMaxMixList
 
 fun main() {
     /*
@@ -19,5 +17,7 @@ fun main() {
     // val seller = bfs(Node(Person("Gabriele")), graph)
     // println(seller)
 
-    dijkstraRun(dijkstraGraph, Node(Name("start")), Node(Name("finish")))
+    // dijkstraRun(dijkstraGraph, Node(Name("start")), Node(Name("finish")))
+
+    AddableMaxMinListUseCase.run()
 }

@@ -1,23 +1,13 @@
+import binarysearch.BinarySearchUseCase
 import custom.data.structures.AddableMaxMinListUseCase
-import custom.data.structures.AddableMaxMixList
+import graphs.breadth.first.search.BfsUseCase
+import graphs.dijkstra.DijkstraUseCase
+import quicksort.QuickSortUseCase
 
 fun main() {
-    /*
-    val unsortedList = listOf(0, 1, 2, 4, 5, 9, 12, 3, 56, 79, 88, 96, 111)
-    val sortedImprovedList = improvedQuickSort(unsortedList)
-    val binarySearch = binarySearch(sortedImprovedList, 111)
-    val binarySearchImproved = binarySearchImproved(sortedImprovedList,  111)
-
-
-    println("Sorted list: $sortedImprovedList")
-    println("Binary search : $binarySearch")
-    println("Binary search improved: $binarySearchImproved")
-     */
-
-    // val seller = bfs(Node(Person("Gabriele")), graph)
-    // println(seller)
-
-    // dijkstraRun(dijkstraGraph, Node(Name("start")), Node(Name("finish")))
-
+    BinarySearchUseCase.run()
+    QuickSortUseCase.run()
+    BfsUseCase.run()
+    DijkstraUseCase.run()
     AddableMaxMinListUseCase.run()
 }

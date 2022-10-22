@@ -31,4 +31,4 @@ fun improvedQuickSort(list: List<Int>): List<Int> =
                 else -> improvedQuickSort(lowerNumbers) + pivot + improvedQuickSort(higherNumbers)
             }
         }
-    }.also { println("flash sort iteration") }
+    }.also { println("Improved quickSort iteration") }

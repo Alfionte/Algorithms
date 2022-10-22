@@ -16,7 +16,6 @@ fun binarySearch(orderedList: List<Int>, searchedItem: Int): Pair<Boolean, Int> 
         val midGuess = orderedList[mid]
 
         when {
-            searchedItem == midGuess -> return true to count
             searchedItem < midGuess -> {
                 max = mid - 1
                 min++
@@ -26,8 +25,9 @@ fun binarySearch(orderedList: List<Int>, searchedItem: Int): Pair<Boolean, Int> 
                 min = mid + 1
                 max--
             }
-        }
 
+            else -> return true to count
+        }
     }
     return false to count
 }

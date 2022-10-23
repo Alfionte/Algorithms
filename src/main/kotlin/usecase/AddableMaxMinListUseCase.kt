@@ -1,8 +1,10 @@
-package custom.data.structures
+package usecase
 
-object AddableMaxMinListUseCase {
+import custom.data.structures.AddableListImpl
 
-    fun run() {
+object AddableMaxMinListUseCase : UseCase{
+
+    override fun run() {
         println("--- AddableMaxMinListUseCase ---")
 
         var max = Int.MIN_VALUE

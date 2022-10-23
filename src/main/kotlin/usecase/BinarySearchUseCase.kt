@@ -1,8 +1,11 @@
-package binarysearch
+package usecase
 
-object BinarySearchUseCase {
+import binarysearch.binarySearch
+import binarysearch.binarySearchImproved
 
-    fun run(){
+object BinarySearchUseCase : UseCase{
+
+    override fun run(){
         println("--- BinarySearchUseCase ---")
 
         val list = listOf(0, 1, 2, 4, 5, 9, 12, 3, 56, 79, 88, 96, 111)

@@ -1,52 +1,87 @@
 package custom.data.structures
 
-interface FastMutableList<E> : MutableList<E> {
+/**
+ This FastMutableListImpl
+ */
+class FastMutableList<E : Comparable<E>>(
+    vararg callbacks: AddableListCallbacks<E>
+) : MutableList<E> {
 
-    interface AddableListCallbacks<E> {
-        val onValueAdded: (E) -> Unit
-        val onClear: () -> Unit
+    private val callbackList = callbacks.toList()
+    private val list = mutableListOf<E>()
+    override val size: Int = list.size
+
+    override fun get(index: Int): E = list[index]
+
+    override fun isEmpty(): Boolean = size == 0
+
+    override fun iterator(): MutableIterator<E> = list.iterator()
+
+    override fun set(index: Int, element: E): E = list.set(index, element).also { update(element) }
+
+    override fun add(element: E): Boolean = list.add(element).also { update(element) }
+
+    override fun add(index: Int, element: E) = list.add(index, element).also { update(element) }
+
+    override fun addAll(elements: Collection<E>): Boolean {
+        elements.forEach { add(it) }
+        return true
     }
 
-    /**
-     * Adds the specified element to the end of this list.
-     *
-     * @return `true` because the list is always modified as the result of this operation.
-     */
-    override fun add(element: E): Boolean
+    override fun addAll(index: Int, elements: Collection<E>): Boolean {
+        elements.forEach { add(index, it) }
+        return true
+    }
 
-    // Bulk Modification Operations
-    /**
-     * Adds all the elements of the specified collection to the end of this list.
-     *
-     * The elements are appended in the order they appear in the [elements] collection.
-     *
-     * @return `true` if the list was changed as the result of the operation.
-     */
-    override fun addAll(elements: Collection<E>): Boolean
+    override fun clear() = list.clear().also { callbackList.forEach { it.onClear() } }
 
-    override fun clear()
+    override fun remove(element: E): Boolean =
+        if (list.remove(element)) {
+            updateListAfterRemoval()
+            true
+        } else false
 
-    // Positional Access Operations
-    /**
-     * Replaces the element at the specified position in this list with the specified element.
-     *
-     * @return the element previously at the specified position.
-     */
-    override operator fun set(index: Int, element: E): E
+    override fun removeAt(index: Int): E {
+        val removedElement = list.removeAt(index)
+        updateListAfterRemoval()
+        return removedElement
+    }
 
-    /**
-     * Inserts an element into the list at the specified [index].
-     */
-    override fun add(index: Int, element: E)
+    override fun removeAll(elements: Collection<E>): Boolean {
+        val areRemovedSuccessfully = list.removeAll(elements)
+        updateListAfterRemoval()
+        return areRemovedSuccessfully
+    }
 
-    override fun removeAt(index: Int): E
-    override fun removeAll(elements: Collection<E>): Boolean
+    override fun retainAll(elements: Collection<E>): Boolean {
+        val areRetainedSuccessfully = list.retainAll(elements)
+        updateListAfterRemoval()
+        return areRetainedSuccessfully
+    }
 
-    // List Iterators
-    override fun listIterator(): MutableListIterator<E>
+    private fun updateListAfterRemoval() {
+        val tmpList = list.toList()
+        clear()
+        addAll(tmpList)
+    }
 
-    override fun listIterator(index: Int): MutableListIterator<E>
+    override fun listIterator() = list.listIterator()
 
-    // View
-    override fun subList(fromIndex: Int, toIndex: Int): MutableList<E>
+    override fun listIterator(index: Int) = list.listIterator(index)
+
+    override fun subList(fromIndex: Int, toIndex: Int) = list.subList(fromIndex, toIndex)
+
+    override fun lastIndexOf(element: E): Int = lastIndexOf(element)
+
+    override fun indexOf(element: E): Int = indexOf(element)
+
+    override fun containsAll(elements: Collection<E>): Boolean = list.containsAll(elements)
+
+    override fun contains(element: E): Boolean = contains(element)
+
+    private fun update(element: E) {
+        callbackList.forEach { it.onValueAdded(element) }
+    }
+
+    override fun toString(): String = list.toString()
 }

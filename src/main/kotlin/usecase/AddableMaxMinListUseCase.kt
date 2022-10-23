@@ -1,6 +1,6 @@
 package usecase
 
-import custom.data.structures.FastMutableListImpl
+import custom.data.structures.FastMutableList
 import custom.data.structures.FastOperationMax
 import custom.data.structures.FastOperationMin
 
@@ -12,7 +12,7 @@ object AddableMaxMinListUseCase : UseCase {
         val min = FastOperationMin(Int.MAX_VALUE)
         val max = FastOperationMax(Int.MIN_VALUE)
 
-        val list = FastMutableListImpl(min, max)
+        val list = FastMutableList(min, max)
         list.addAll(listOf(1, 4, 76, 98, 5, 7, 2))
 
         println("Create list with 1, 4, 76, 98, 5, 7, 2")

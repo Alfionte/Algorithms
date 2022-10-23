@@ -1,5 +1,12 @@
 package custom.data.structures
 
+/**
+ * The [FastMutableList] is a [MutableList]
+ * With different performances.
+ * Insertion : Same as [MutableList]
+ * Linear operations: O(1) - For example max, min etc.
+ * Deletion: O(n)
+ */
 class FastMutableList<E : Comparable<E>>(
     vararg callbacks: AddableListCallbacks<E>
 ) : MutableList<E> {

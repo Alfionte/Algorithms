@@ -1,6 +1,6 @@
 package custom.data.structures
 
-interface AddableListCallbacks<E> {
+interface FastOperation<E> {
     val onValueAdded: (E) -> Unit
     val onClear: () -> Unit
 }

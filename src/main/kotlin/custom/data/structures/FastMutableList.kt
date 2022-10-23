@@ -8,7 +8,7 @@ package custom.data.structures
  * Deletion: O(n)
  */
 class FastMutableList<E : Comparable<E>>(
-    vararg callbacks: AddableListCallbacks<E>
+    vararg callbacks: FastOperation<E>
 ) : MutableList<E> {
 
     private val callbackList = callbacks.toList()

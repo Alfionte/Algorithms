@@ -1,6 +1,6 @@
 package custom.data.structures
 
-class AddableOperationMax<T : Comparable<T>>(maxDefault: T) : AddableList.AddableListCallbacks<T> {
+class FastOperationMax<T : Comparable<T>>(maxDefault: T) : FastMutableList.AddableListCallbacks<T> {
 
     var maxValue = maxDefault
 

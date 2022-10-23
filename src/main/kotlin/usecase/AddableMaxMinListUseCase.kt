@@ -1,34 +1,51 @@
 package usecase
 
-import custom.data.structures.AddableListImpl
-import custom.data.structures.AddableOperationMax
-import custom.data.structures.AddableOperationMin
+import custom.data.structures.FastMutableListImpl
+import custom.data.structures.FastOperationMax
+import custom.data.structures.FastOperationMin
 
 object AddableMaxMinListUseCase : UseCase {
 
     override fun run() {
         println("--- AddableMaxMinListUseCase ---")
 
-        val min = AddableOperationMin(Int.MAX_VALUE)
-        val max = AddableOperationMax(Int.MIN_VALUE)
+        val min = FastOperationMin(Int.MAX_VALUE)
+        val max = FastOperationMax(Int.MIN_VALUE)
 
-        val listMax = AddableListImpl(min, max)
-        listMax.addAll(listOf(1, 4, 76, 98, 5, 7, 2))
+        val list = FastMutableListImpl(min, max)
+        list.addAll(listOf(1, 4, 76, 98, 5, 7, 2))
 
-        println("List : $listMax")
+        println("Create list with 1, 4, 76, 98, 5, 7, 2")
+        println("List : $list")
         println("List max : ${max.maxValue}")
         println("List min : ${min.minValue}")
         println()
 
-        listMax.add(100)
-        listMax.add(0)
-        println("List : $listMax")
+        list.remove(98)
+        list.remove(1)
+        println("Remove 98, 1")
+        println("List : $list")
         println("List max : ${max.maxValue}")
         println("List min : ${min.minValue}")
         println()
 
-        listMax.clear()
-        println("List cleared: $listMax")
+        list.add(100)
+        list.add(0)
+        println("Add 0, 100")
+        println("List : $list")
+        println("List max : ${max.maxValue}")
+        println("List min : ${min.minValue}")
+        println()
+
+        list.removeAll(listOf(4, 5))
+        println("Remove 4, 5")
+        println("List : $list")
+        println("List max : ${max.maxValue}")
+        println("List min : ${min.minValue}")
+        println()
+
+        list.clear()
+        println("List cleared: $list")
         println("List max : ${max.maxValue}")
         println("List min : ${min.minValue}")
 

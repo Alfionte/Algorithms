@@ -1,19 +1,18 @@
 package custom.data.structures
 
-class AddableListImpl<E : Comparable<E>>(
-    vararg callbacks: AddableList.AddableListCallbacks<E>
-) : AddableList<E> {
+class FastMutableListImpl<E : Comparable<E>>(
+    vararg callbacks: FastMutableList.AddableListCallbacks<E>
+) : FastMutableList<E> {
 
     private val callbackList = callbacks.toList()
     private val list = mutableListOf<E>()
     override val size: Int = list.size
 
-
     override fun get(index: Int): E = list[index]
 
     override fun isEmpty(): Boolean = size == 0
 
-    override fun iterator(): Iterator<E> = list.iterator()
+    override fun iterator(): MutableIterator<E> = list.iterator()
 
     override fun set(index: Int, element: E): E = list.set(index, element).also { update(element) }
 
@@ -26,7 +25,42 @@ class AddableListImpl<E : Comparable<E>>(
         return true
     }
 
+    override fun addAll(index: Int, elements: Collection<E>): Boolean {
+        elements.forEach { add(index, it) }
+        return true
+    }
+
     override fun clear() = list.clear().also { callbackList.forEach { it.onClear() } }
+
+    override fun remove(element: E): Boolean =
+        if (list.remove(element)) {
+            updateListAfterRemoval()
+            true
+        } else false
+
+    override fun removeAt(index: Int): E {
+        val removedElement = list.removeAt(index)
+        updateListAfterRemoval()
+        return removedElement
+    }
+
+    override fun removeAll(elements: Collection<E>): Boolean {
+        val areRemovedSuccessfully = list.removeAll(elements)
+        updateListAfterRemoval()
+        return areRemovedSuccessfully
+    }
+
+    override fun retainAll(elements: Collection<E>): Boolean {
+        val areRetainedSuccessfully = list.retainAll(elements)
+        updateListAfterRemoval()
+        return areRetainedSuccessfully
+    }
+
+    private fun updateListAfterRemoval() {
+        val tmpList = list.toList()
+        clear()
+        addAll(tmpList)
+    }
 
     override fun listIterator() = list.listIterator()
 

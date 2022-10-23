@@ -1,6 +1,6 @@
 package custom.data.structures
 
-class AddableOperationMin<T : Comparable<T>>(minDefault: T) : AddableList.AddableListCallbacks<T> {
+class FastOperationMin<T : Comparable<T>>(minDefault: T) : FastMutableList.AddableListCallbacks<T> {
 
     var minValue = minDefault
 

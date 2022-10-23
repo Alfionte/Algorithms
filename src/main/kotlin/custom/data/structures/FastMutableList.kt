@@ -1,6 +1,6 @@
 package custom.data.structures
 
-interface AddableList<E> : List<E> {
+interface FastMutableList<E> : MutableList<E> {
 
     interface AddableListCallbacks<E> {
         val onValueAdded: (E) -> Unit
@@ -12,7 +12,7 @@ interface AddableList<E> : List<E> {
      *
      * @return `true` because the list is always modified as the result of this operation.
      */
-    fun add(element: E): Boolean
+    override fun add(element: E): Boolean
 
     // Bulk Modification Operations
     /**
@@ -22,9 +22,9 @@ interface AddableList<E> : List<E> {
      *
      * @return `true` if the list was changed as the result of the operation.
      */
-    fun addAll(elements: Collection<E>): Boolean
+    override fun addAll(elements: Collection<E>): Boolean
 
-    fun clear(): Unit
+    override fun clear()
 
     // Positional Access Operations
     /**
@@ -32,12 +32,15 @@ interface AddableList<E> : List<E> {
      *
      * @return the element previously at the specified position.
      */
-    operator fun set(index: Int, element: E): E
+    override operator fun set(index: Int, element: E): E
 
     /**
      * Inserts an element into the list at the specified [index].
      */
-    fun add(index: Int, element: E): Unit
+    override fun add(index: Int, element: E)
+
+    override fun removeAt(index: Int): E
+    override fun removeAll(elements: Collection<E>): Boolean
 
     // List Iterators
     override fun listIterator(): MutableListIterator<E>

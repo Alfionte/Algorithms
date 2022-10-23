@@ -2,6 +2,11 @@ package custom.data.structures
 
 interface AddableList<E> : List<E> {
 
+    interface AddableListCallbacks<E> {
+        val onValueAdded: (E) -> Unit
+        val onClear: () -> Unit
+    }
+
     /**
      * Adds the specified element to the end of this list.
      *

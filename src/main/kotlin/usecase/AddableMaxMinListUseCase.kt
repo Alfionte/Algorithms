@@ -1,45 +1,36 @@
 package usecase
 
 import custom.data.structures.AddableListImpl
+import custom.data.structures.AddableOperationMax
+import custom.data.structures.AddableOperationMin
 
-object AddableMaxMinListUseCase : UseCase{
+object AddableMaxMinListUseCase : UseCase {
 
     override fun run() {
         println("--- AddableMaxMinListUseCase ---")
 
-        var max = Int.MIN_VALUE
-        var min = Int.MAX_VALUE
-        val onChange = { lastAdded: Int ->
-            println("Added number - $lastAdded")
-            if (max < lastAdded) max = lastAdded
-            if (min > lastAdded) min = lastAdded
-        }
+        val min = AddableOperationMin(Int.MAX_VALUE)
+        val max = AddableOperationMax(Int.MIN_VALUE)
 
-        val onClear = {
-            println("onClear")
-            max = Int.MIN_VALUE
-            min = Int.MAX_VALUE
-        }
-
-        val listMax = AddableListImpl(onChange, onClear)
+        val listMax = AddableListImpl(min, max)
         listMax.addAll(listOf(1, 4, 76, 98, 5, 7, 2))
 
         println("List : $listMax")
-        println("List max : $max")
-        println("List min : $min")
+        println("List max : ${max.maxValue}")
+        println("List min : ${min.minValue}")
         println()
 
         listMax.add(100)
         listMax.add(0)
         println("List : $listMax")
-        println("List max : $max")
-        println("List min : $min")
+        println("List max : ${max.maxValue}")
+        println("List min : ${min.minValue}")
         println()
 
         listMax.clear()
         println("List cleared: $listMax")
-        println("List max : $max")
-        println("List min : $min")
+        println("List max : ${max.maxValue}")
+        println("List min : ${min.minValue}")
 
         println()
     }

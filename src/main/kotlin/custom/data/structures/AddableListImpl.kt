@@ -1,12 +1,13 @@
 package custom.data.structures
 
 class AddableListImpl<E : Comparable<E>>(
-    val onValueAdded: (E) -> Unit = {},
-    val onClear: () -> Unit = {}
+    vararg callbacks: AddableList.AddableListCallbacks<E>
 ) : AddableList<E> {
 
+    private val callbackList = callbacks.toList()
     private val list = mutableListOf<E>()
     override val size: Int = list.size
+
 
     override fun get(index: Int): E = list[index]
 
@@ -25,7 +26,7 @@ class AddableListImpl<E : Comparable<E>>(
         return true
     }
 
-    override fun clear() = list.clear().also { onClear() }
+    override fun clear() = list.clear().also { callbackList.forEach { it.onClear() } }
 
     override fun listIterator() = list.listIterator()
 
@@ -42,7 +43,7 @@ class AddableListImpl<E : Comparable<E>>(
     override fun contains(element: E): Boolean = contains(element)
 
     private fun update(element: E) {
-        onValueAdded(element)
+        callbackList.forEach { it.onValueAdded(element) }
     }
 
     override fun toString(): String = list.toString()

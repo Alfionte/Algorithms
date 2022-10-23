@@ -5,7 +5,7 @@ val useCaseCollection = listOf(
     QuickSortUseCase,
     BfsUseCase,
     DijkstraUseCase,
-    AddableMaxMinListUseCase,
+    FastListUseCase,
 )
 
 fun main() {

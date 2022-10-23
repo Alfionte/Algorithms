@@ -4,7 +4,7 @@ import custom.data.structures.FastMutableList
 import custom.data.structures.FastOperationMax
 import custom.data.structures.FastOperationMin
 
-object AddableMaxMinListUseCase : UseCase {
+object FastListUseCase : UseCase {
 
     override fun run() {
         println("--- AddableMaxMinListUseCase ---")

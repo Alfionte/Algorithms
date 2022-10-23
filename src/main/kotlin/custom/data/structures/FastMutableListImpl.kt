@@ -1,8 +1,8 @@
 package custom.data.structures
 
 class FastMutableListImpl<E : Comparable<E>>(
-    vararg callbacks: FastMutableList.AddableListCallbacks<E>
-) : FastMutableList<E> {
+    vararg callbacks: AddableListCallbacks<E>
+) : MutableList<E> {
 
     private val callbackList = callbacks.toList()
     private val list = mutableListOf<E>()

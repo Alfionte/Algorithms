@@ -4,6 +4,7 @@ val useCaseCollection = listOf(
     BinarySearchUseCase,
     QuickSortUseCase,
     BfsUseCase,
+    DfsUseCase,
     DijkstraUseCase,
     FastListUseCase,
 )

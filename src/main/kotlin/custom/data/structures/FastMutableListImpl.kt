@@ -1,9 +1,6 @@
 package custom.data.structures
 
-/**
- This FastMutableListImpl
- */
-class FastMutableList<E : Comparable<E>>(
+class FastMutableListImpl<E : Comparable<E>>(
     vararg callbacks: AddableListCallbacks<E>
 ) : MutableList<E> {
 

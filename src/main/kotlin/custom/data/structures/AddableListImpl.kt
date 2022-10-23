@@ -1,18 +1,12 @@
 package custom.data.structures
 
-class AddableMaxMixList<E : Comparable<E>>(
-    private val maxDefault: Comparable<E>,
-    private val minDefault: Comparable<E>
+class AddableListImpl<E : Comparable<E>>(
+    val onValueAdded: (E) -> Unit = {},
+    val onClear: () -> Unit = {}
 ) : AddableList<E> {
 
     private val list = mutableListOf<E>()
     override val size: Int = list.size
-
-    var maxElement = maxDefault
-        private set
-
-    var minElement = minDefault
-        private set
 
     override fun get(index: Int): E = list[index]
 
@@ -31,10 +25,7 @@ class AddableMaxMixList<E : Comparable<E>>(
         return true
     }
 
-    override fun clear() = list.clear().also {
-        maxElement = maxDefault
-        minElement = minDefault
-    }
+    override fun clear() = list.clear().also { onClear() }
 
     override fun listIterator() = list.listIterator()
 
@@ -51,16 +42,7 @@ class AddableMaxMixList<E : Comparable<E>>(
     override fun contains(element: E): Boolean = contains(element)
 
     private fun update(element: E) {
-        updateMax(element)
-        updateMin(element)
-    }
-
-    private fun updateMax(element: E) {
-        if (maxElement < element) maxElement = element
-    }
-
-    private fun updateMin(element: E) {
-        if (minElement > element) minElement = element
+        onValueAdded(element)
     }
 
     override fun toString(): String = list.toString()

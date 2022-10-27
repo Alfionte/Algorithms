@@ -2,6 +2,7 @@ import usecase.*
 
 val useCaseCollection = listOf(
     BinarySearchUseCase,
+    TernarySearchUseCase,
     QuickSortUseCase,
     BfsUseCase,
     DfsUseCase,

@@ -13,7 +13,7 @@ object BinarySearchUseCase : UseCase{
         val binarySearchImproved = binarySearchImproved(list, 111)
 
         println("Binary search : found: ${binarySearch.first}, iterations: ${binarySearch.second}")
-        println("Binary search improved : found: ${binarySearchImproved.first}, iterations: ${binarySearchImproved.second}")
+        println("Binary search improved (best case) : found: ${binarySearchImproved.first}, iterations: ${binarySearchImproved.second}")
         println()
     }
 }

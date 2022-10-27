@@ -4,8 +4,25 @@ fun ternarySearch(list: List<Int>, searched: Int, countParam: Int): Pair<Boolean
     var count = countParam
     count++
     if (list.isEmpty()) return false to count
-    val leftIndex = list.size / 3
-    val rightIndex = if (leftIndex != 0) leftIndex * 2 else 1
+
+    val leftIndex: Int
+    val rightIndex: Int
+    when (list.size) {
+        1 -> {
+            leftIndex = 0
+            rightIndex = 0
+        }
+
+        2 -> {
+            leftIndex = 0
+            rightIndex = 1
+        }
+
+        else -> {
+            leftIndex = list.size / 3
+            rightIndex = leftIndex * 2
+        }
+    }
 
     when (searched) {
         list[leftIndex], list[rightIndex] -> return true to count

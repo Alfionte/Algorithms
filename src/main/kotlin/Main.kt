@@ -8,6 +8,7 @@ val useCaseCollection = listOf(
     DfsUseCase,
     DijkstraUseCase,
     FastListUseCase,
+    TwoNumbersSumUseCase,
 )
 
 fun main() {

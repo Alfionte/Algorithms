@@ -9,6 +9,7 @@ val useCaseCollection = listOf(
     DijkstraUseCase,
     FastListUseCase,
     TwoNumbersSumUseCase,
+    TransposeMatrixUseCase,
 )
 
 fun main() {

@@ -10,6 +10,7 @@ val useCaseCollection = listOf(
     FastListUseCase,
     TwoNumbersSumUseCase,
     TransposeMatrixUseCase,
+    EvaluateExpressionTreeUseCase,
 )
 
 fun main() {

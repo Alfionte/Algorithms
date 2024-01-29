@@ -1,18 +1,18 @@
 import usecase.*
 
 val useCaseCollection = listOf(
-//    BinarySearchUseCase,
-//    TernarySearchUseCase,
-//    QuickSortUseCase,
-//    BfsUseCase,
-//    DfsUseCase,
-//    DijkstraUseCase,
-//    FastListUseCase,
-//    TwoNumbersSumUseCase,
-//    TransposeMatrixUseCase,
-//    EvaluateExpressionTreeUseCase,
-//    OptimalFreelancingUseCase,
-//    MiddleNodeUseCase
+    BinarySearchUseCase,
+    TernarySearchUseCase,
+    QuickSortUseCase,
+    BfsUseCase,
+    DfsUseCase,
+    DijkstraUseCase,
+    FastListUseCase,
+    TwoNumbersSumUseCase,
+    TransposeMatrixUseCase,
+    EvaluateExpressionTreeUseCase,
+    OptimalFreelancingUseCase,
+    MiddleNodeUseCase,
     CommonCharactersUseCase,
 )
 

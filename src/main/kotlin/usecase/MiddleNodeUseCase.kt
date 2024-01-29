@@ -22,6 +22,7 @@ object MiddleNodeUseCase : UseCase {
 
 // This is an input class. Do not edit.
 open class LinkedList(value: Int) {
+    @Suppress("CanBePrimaryConstructorProperty")
     var value = value
     var next: LinkedList? = null
 }

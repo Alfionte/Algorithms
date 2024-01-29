@@ -11,7 +11,9 @@ val useCaseCollection = listOf(
 //    TwoNumbersSumUseCase,
 //    TransposeMatrixUseCase,
 //    EvaluateExpressionTreeUseCase,
-    OptimalFreelancingUseCase,
+//    OptimalFreelancingUseCase,
+//    MiddleNodeUseCase
+    CommonCharactersUseCase,
 )
 
 fun main() {
